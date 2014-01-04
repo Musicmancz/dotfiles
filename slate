@@ -1,0 +1,65 @@
+bind 1:ctrl;shift relaunch
+
+#Layouts
+#
+## Coding
+layout code 'Terminal' push right bar-resize:screenSizeX/2
+layout code 'MacVim' push left bar-resize:screenSizeX/2
+
+#Monitor Aliases
+alias mon-laptop  1280x800
+
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+#Push Bindings
+#bind right:ctrl push right bar-resize:screenSizeX/2
+#bind left:ctrl push left bar-resize:screenSizeX/2
+#bind up:ctrl push up bar-resize:screenSizeY/2
+#bind down:ctrl push down bar-resize:screenSizeY/2
+
+#bind up:ctrl;cmd ${full}
+
+#Bindings
+#bind tab:cmd switch
+bind ;:cmd;ctrl hint ASDFGHJKL
+#
+#
+# Abstract positions for later use within configuration.
+#
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias tophalf move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+alias bottomhalf move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+#
+# The following 'bind' lines allow you to hold "CTRL" and "COMMAND"
+# and then press a third key that corresponds to 9 sections of a
+# square:
+#
+#   u  i  o
+#   j  k  l
+#   m  ,  .
+#
+bind y:ctrl;cmd  ${topleft}
+bind h:ctrl;cmd  ${lefthalf}
+bind n:ctrl;cmd  ${bottomleft}
+
+bind u:ctrl;cmd  ${tophalf}
+bind j:ctrl;cmd  ${full}
+bind m:ctrl;cmd  ${bottomhalf}
+
+bind i:ctrl;cmd  ${topright}
+bind k:ctrl;cmd  ${righthalf}
+bind ,:ctrl;cmd  ${bottomright}
+
+#Ctrl + arrow keys to resize 1/12th
+#bind right:ctrl resize +8.3% +0
+#bind left:ctrl resize -8.3% +0
+
+bind 2:ctrl layout code
+bind t:ctrl;cmd sequence shell 'open /Applications/iTerm.app'
